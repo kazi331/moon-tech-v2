@@ -20,6 +20,16 @@ const filterReducer = (state = initialState, action) => {
         }
       }
     case TOGGLE_BRAND:
+      const brandExist = state.filter.brand.includes(action.payload);
+      if (brandExist) {
+        return {
+          ...state,
+          filter: {
+            ...state.filter,
+            brand: state.filter.brand.filter(brand => brand !== action.payload)
+          }
+        }
+      }
       return {
         ...state,
         filter: {
