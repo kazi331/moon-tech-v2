@@ -1,20 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
 import { TOGGLE_BRAND, TOGGLE_STOCK } from "../../redux/actionTypes/actionTypes";
+import loadProductData from "../../redux/thunk/loadProduct/loadProduct";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const { products } = useSelector(state => state.product)
+  const { filter } = useSelector(state => state.filter)
+  const { brand, stock } = filter;
 
   useEffect(() => {
-    fetch("http://localhost:5000/products").then((res) => res.json()).then((data) => setProducts(data));
-  }, []);
-  const dispatch = useDispatch();
+    // fetch("http://localhost:5000/products")
+    //   .then((res) => res.json())
+    //   .then((data) => dispatch({ type: LOAD_PRODUCT, payload: data }));
+    dispatch(loadProductData())
+  }, [dispatch]);
 
   const activeClass = "text-white  bg-indigo-500 border-white";
 
-  const { filter } = useSelector(state => state.filter)
-  const { brand, stock } = filter;
+
 
   let content = products.length && products.map((product) => <ProductCard key={product.model} product={product} />);
   // filter content with brand and stock
@@ -40,7 +46,7 @@ const Home = () => {
         <button className={`border px-3 py-2 rounded-full font-semibold ${brand.includes('intel') && activeClass} `} onClick={() => dispatch({ type: TOGGLE_BRAND, payload: 'intel' })}> Intel</button>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14'>
-        {content}
+        {products.length ? content : <p className="py-10 text-bold text-lg text-center text-pink-500">No items found</p>}
       </div>
     </div>
   );

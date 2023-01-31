@@ -1,9 +1,8 @@
 import {
   ADD_PRODUCT,
   ADD_TO_CART,
-  PRODUCT_LOADED,
-  REMOVE_FROM_CART,
-  REMOVE_PRODUCT,
+  LOAD_PRODUCT, REMOVE_FROM_CART,
+  REMOVE_PRODUCT
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -34,13 +33,8 @@ const productReducer = (state = initialState, action) => {
         const newCart = state.cart.filter(
           (product) => product._id !== selectedProduct._id
         );
-
         selectedProduct.quantity = selectedProduct.quantity + 1;
-
-        return {
-          ...state,
-          cart: [...newCart, selectedProduct],
-        };
+        return { ...state, cart: [...newCart, selectedProduct], };
       }
       return {
         ...state,
@@ -65,11 +59,8 @@ const productReducer = (state = initialState, action) => {
         ),
       };
 
-    case PRODUCT_LOADED:
-      return {
-        ...state,
-        products: action.payload,
-      };
+    case LOAD_PRODUCT:
+      return { ...state, products: action.payload };
     default:
       return state;
   }
