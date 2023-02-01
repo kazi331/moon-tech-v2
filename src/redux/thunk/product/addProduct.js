@@ -17,3 +17,4 @@ const addProductData = (product) => {
 }
 
 export default addProductData;
+

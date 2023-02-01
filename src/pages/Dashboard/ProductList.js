@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import deleteProduct from "../../redux/thunk/product/deleteProduct";
 import loadProductData from "../../redux/thunk/product/loadProduct";
 
 const ProductList = () => {
@@ -58,7 +59,9 @@ const ProductList = () => {
                     <div className='text-left font-medium text-indigo-500'>{price}</div>
                   </td>
                   <td className='p-2'>
-                    <div className='flex justify-center'><button>{deleteIcon}</button></div>
+                    <div className='flex justify-center'>
+                      <button onClick={() => dispatch(deleteProduct(_id))}>{deleteIcon}</button>
+                    </div>
                   </td>
                 </tr>
               ))}
