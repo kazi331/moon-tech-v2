@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
 import { TOGGLE_BRAND, TOGGLE_STOCK } from "../../redux/actionTypes/actionTypes";
-import loadProductData from "../../redux/thunk/loadProduct/loadProduct";
+import loadProductData from "../../redux/thunk/product/loadProduct";
 
 const Home = () => {
   // const [products, setProducts] = useState([]);
@@ -22,7 +22,7 @@ const Home = () => {
 
 
 
-  let content = products.length && products.map((product) => <ProductCard key={product.model} product={product} />);
+  let content = products.length && products.map((product) => <ProductCard key={product._id} product={product} />);
   // filter content with brand and stock
 
   if (products.length && (stock || brand.length)) {
@@ -34,7 +34,7 @@ const Home = () => {
         }
         return product;
       })
-      .map((product) => <ProductCard key={product.model} product={product} />);
+      .map((product) => <ProductCard key={product._id} product={product} />);
   }
 
 

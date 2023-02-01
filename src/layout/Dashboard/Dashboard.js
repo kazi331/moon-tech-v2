@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className='grid grid-cols-12 p-3 gap-3 min-w-max'>
       <Sidebar />
-      <div className='col-span-10 w-full bg-gray-100 rounded-lg'>
+      <div className='col-span-10 w-full bg-gray-200 rounded-lg'>
         <Outlet />
       </div>
     </div>
