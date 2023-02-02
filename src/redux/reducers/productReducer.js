@@ -24,9 +24,7 @@ const productReducer = (state = initialState, action) => {
     case REMOVE_PRODUCT:
       return {
         ...state,
-        products: state.products.filter(
-          (product) => product._id !== action.payload
-        ),
+        products: state.products.filter(product => product._id !== action.payload),
       };
     case ADD_TO_CART:
       if (selectedProduct) {
@@ -46,7 +44,6 @@ const productReducer = (state = initialState, action) => {
           (product) => product._id !== selectedProduct._id
         );
         selectedProduct.quantity = selectedProduct.quantity - 1;
-
         return {
           ...state,
           cart: [...newCart, selectedProduct],

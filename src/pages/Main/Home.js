@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
-import { TOGGLE_BRAND, TOGGLE_STOCK } from "../../redux/actionTypes/actionTypes";
+import { CLEAR_FILTER, TOGGLE_BRAND, TOGGLE_STOCK } from "../../redux/actionTypes/actionTypes";
 import loadProductData from "../../redux/thunk/product/loadProduct";
 
 const Home = () => {
@@ -12,15 +12,9 @@ const Home = () => {
   const { brand, stock } = filter;
 
   useEffect(() => {
-    // fetch("http://localhost:5000/products")
-    //   .then((res) => res.json())
-    //   .then((data) => dispatch({ type: LOAD_PRODUCT, payload: data }));
     dispatch(loadProductData())
   }, [dispatch]);
-
   const activeClass = "text-white  bg-indigo-500 border-white";
-
-
 
   let content = products.length && products.map((product) => <ProductCard key={product._id} product={product} />);
   // filter content with brand and stock
@@ -41,6 +35,10 @@ const Home = () => {
   return (
     <div className='max-w-7xl gap-14 mx-auto my-10'>
       <div className='mb-10 flex justify-end gap-5'>
+        {
+          (filter.brand.length || filter.stock) &&
+          <button className={` px-3 py-2 rounded-full font-semibold bg-red-500 text-white ${stock && activeClass} `} onClick={() => dispatch({ type: CLEAR_FILTER })}>Clear Filter</button>
+        }
         <button className={`border px-3 py-2 rounded-full font-semibold ${stock && activeClass} `} onClick={() => dispatch({ type: TOGGLE_STOCK })}>In Stock</button>
         <button className={`border px-3 py-2 rounded-full font-semibold ${brand.includes('amd') && activeClass}`} onClick={() => dispatch({ type: TOGGLE_BRAND, payload: 'amd' })}> AMD</button>
         <button className={`border px-3 py-2 rounded-full font-semibold ${brand.includes('intel') && activeClass} `} onClick={() => dispatch({ type: TOGGLE_BRAND, payload: 'intel' })}> Intel</button>

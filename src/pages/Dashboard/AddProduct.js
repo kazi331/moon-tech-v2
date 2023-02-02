@@ -15,23 +15,12 @@ const AddProduct = () => {
       status: data.status === "true" ? true : false,
       price: data.price,
       rating: data.rating,
-      keyFeature: [
-        data.keyFeature1,
-        data.keyFeature2,
-        data.keyFeature3,
-        data.keyFeature4,
-      ],
+      keyFeature: [data.keyFeature1, data.keyFeature2, data.keyFeature3, data.keyFeature4],
       spec: {
-        "processor": data.processor,
-        "mobo": data.mobo,
-        "ram": data.ram,
-        "graphics": data.graphics,
-        "casing": data.casing,
-        "psu": data.psu,
-        "cooler": data.cooler,
+        "processor": data.processor, "mobo": data.mobo, "ram": data.ram,
+        "graphics": data.graphics, "casing": data.casing, "psu": data.psu, "cooler": data.cooler
       },
     };
-
     dispatch(addProductData(product))
   };
 
@@ -54,7 +43,6 @@ const AddProduct = () => {
             <option value='intel'>Intel</option>
           </select>
         </div>
-
 
         <div className='flex flex-col w-full max-w-xs'>
           <h1 className='mb-3'>Availability</h1>
@@ -134,7 +122,7 @@ const AddProduct = () => {
         </div>
 
         <div className='flex justify-between items-center w-full'>
-          <button className=' px-4 py-3 bg-indigo-500 rounded-md font-semibold text-white text-lg disabled:bg-gray-500' type='submit' >Submit</button>
+          <button className=' px-4 py-3 bg-indigo-500 rounded-md font-semibold text-white text-lg disabled:bg-gray-500' type='submit' >Add Product</button>
         </div>
       </form>
     </div>

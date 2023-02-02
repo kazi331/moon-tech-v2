@@ -1,8 +1,7 @@
 import {
   ADD_PRODUCT,
   ADD_TO_CART,
-  LOAD_PRODUCT,
-  PRODUCT_LOADED,
+  LOAD_PRODUCT, PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT
 } from "../actionTypes/actionTypes";
