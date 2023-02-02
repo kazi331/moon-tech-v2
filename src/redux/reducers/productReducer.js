@@ -55,7 +55,7 @@ const productReducer = (state = initialState, action) => {
           (product) => product._id !== action.payload._id
         ),
       };
-
+      
     case LOAD_PRODUCT:
       return { ...state, products: action.payload };
     default:

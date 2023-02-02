@@ -17,7 +17,7 @@ const AddProduct = () => {
       rating: data.rating,
       keyFeature: [data.keyFeature1, data.keyFeature2, data.keyFeature3, data.keyFeature4],
       spec: {
-        "processor": data.processor, "mobo": data.mobo, "ram": data.ram,
+        "processor": data.processor, "mobo": data.mobo, "ram": data.ram, storage: data.storage,
         "graphics": data.graphics, "casing": data.casing, "psu": data.psu, "cooler": data.cooler
       },
     };

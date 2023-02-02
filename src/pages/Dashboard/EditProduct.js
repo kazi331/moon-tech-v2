@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import updateProductData from "../../redux/thunk/product/updateProductData";
 
 const EditProduct = () => {
   const [product, setProduct] = useState({})
@@ -47,8 +48,8 @@ const EditProduct = () => {
         "graphics": data.graphics, "casing": data.casing, "psu": data.psu, "cooler": data.cooler
       },
     };
-    // dispatch(addProductData(product))
     console.log(product)
+    dispatch(updateProductData(_id, product))
   };
 
 

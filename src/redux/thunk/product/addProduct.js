@@ -7,7 +7,7 @@ const addProductData = (product) => {
       body: JSON.stringify(product),
       headers: { 'content-type': 'application/json' }
     })
-    console.log({ res })
+    // console.log({ res })
     const data = await res.json();
     if (data) {
      dispatch( addProduct({...product, _id: data._id}));
